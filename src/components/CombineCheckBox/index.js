@@ -116,7 +116,7 @@ export default class CombineCheckBox extends Component {
   render() {
     return (
       <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}><div>招聘职位</div><div onClick={this.clearAll}>清除</div></div>    
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0' }}><div>招聘职位</div><div onClick={this.clearAll}>清除</div></div>    
         {this.generateTree()}
       </div>
     )
