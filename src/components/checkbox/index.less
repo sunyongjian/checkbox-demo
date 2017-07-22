@@ -1,3 +1,4 @@
+@import '../../index.less';
 .checkbox {
   cursor: pointer;
   display: inline-block;
@@ -34,14 +35,14 @@
       height: 15px;
       line-height: 15px;
       background-color: #fff;
-      border: 1px solid #7D8F9B;
+      border: 1px solid @mainColor;
       i {
         color: #fff;
         font-size: 12px;
       }
     }
     .checkbox-checked {
-      background-color: #7D8F9B;
+      background-color: @mainColor;
     }
     &+span {
       padding-left: 8px;

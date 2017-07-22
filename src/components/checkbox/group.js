@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CheckBox from './index';
-import './group.less';
+
 /**
  * options defaultValue value onChange
  * notice: 保证value的唯一性

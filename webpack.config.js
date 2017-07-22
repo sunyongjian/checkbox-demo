@@ -47,4 +47,5 @@ module.exports = {
     historyApiFallback: true,
     compress: true,
   },
+  devtool: 'source-map',
 };
