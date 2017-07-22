@@ -23,29 +23,32 @@ export default class CombineCheckBox extends Component {
     }
   }
 
+  setValues = (id, parentValue, checkList) => {
+    const { onChange } = this.props;
+    const { parentValues, selectedValues } = this.state;
+    this.setState({
+      parentValues: {
+        ...parentValues,
+        [id]: parentValue,
+      },
+      selectedValues: {
+        ...selectedValues,
+        [id]: checkList,
+      }
+    }, () => { typeof onChange === 'function' && onChange(this.getAllChild()) });
+  }
+
   selectAll = id => allChecked => {
     const { parentIdMapChild } = this.state;
     const childValues = allChecked ? parentIdMapChild[id].allChildIds : [];
-    this.setValues('selectedValues', id, childValues);
-    this.setValues('parentValues', id, allChecked);
-  }
-
-  setValues = (stateKey, id, values) => {
-    const { onChange } = this.props;
-    const state = this.state[stateKey]; 
-    this.setState({
-      [stateKey]: {
-        ...state,
-        [id]: values,
-      }
-    }, () => { typeof onChange === 'function' && onChange(this.getAllChild()) })
+    this.setValues(id, allChecked, childValues);
   }
 
   selectItem = id => checkList => {
+    const { onChange } = this.props;
     const { allChildIds } = this.state.parentIdMapChild[id];
     const parentValue = checkList.length === allChildIds.length ? true : false;
-    this.setValues('parentValues', id, parentValue);
-    this.setValues('selectedValues', id, checkList);
+    this.setValues(id, parentValue, checkList);
   }
 
   getAllChild = () => {
@@ -62,9 +65,9 @@ export default class CombineCheckBox extends Component {
       return {...res, [cur]: []}
     }, {});
     this.setState({
-      selectedValues: allEmpty,
       parentValues: {},
-    }, () => { typeof onChange === 'function' && onChange(this.getAllChild()) })
+      selectedValues: allEmpty,
+    }, () => { typeof onChange === 'function' && onChange(this.getAllChild()) });
   }
 
   getJobValues (props) {
