@@ -1,7 +1,7 @@
 ## introduction
 a demo
 ## preview
-![image](./assets/tree-select.git)
+![image](./assets/tree-select.gif)
 ## start
 <pre>
 1. git clone git@github.com:sunyongjian/checkbox-demo.git
